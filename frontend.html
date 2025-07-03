@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Guitar Learning App - UI Only</title>
+  <title>Guitar Learning App - UI</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -42,7 +41,7 @@
 </head>
 <body>
 
-  <h1>🎸 Guitar Learning App Demo (UI Only)</h1>
+  <h1>🎸 Guitar Learning App Demo</h1>
 
   <div class="module">
     <h2>🤖 Chatbot</h2>
@@ -74,9 +73,37 @@
       <option value="Energetic">Energetic</option>
       <option value="Chill">Chill</option>
     </select>
-    <button>Generate Practice Tips</button>
+    <button id="generateBtn">Generate Practice Tips</button>
     <div class="output" id="moodResult"></div>
   </div>
+
+  <script>
+    document.getElementById("generateBtn").addEventListener("click", async () => {
+      const mood = document.getElementById("mood").value;
+
+      try {
+        const response = await fetch("https://dl1pjlglyd.execute-api.us-east-2.amazonaws.com/test/mood_generator", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ mood })
+        });
+
+        const data = await response.json();
+
+        if (data.exercises) {
+          document.getElementById("moodResult").textContent = 
+            `Try: ${data.exercises[0]} and ${data.exercises[1]}`;
+        } else {
+          document.getElementById("moodResult").textContent = "No suggestions returned.";
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("moodResult").textContent = "Something went wrong.";
+      }
+    });
+  </script>
 
 </body>
 </html>
