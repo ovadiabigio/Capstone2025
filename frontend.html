@@ -1,1 +1,82 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guitar Learning App - UI Only</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: white;
+      padding: 30px;
+    }
+    h1, h2 {
+      color: #ffffff;
+    }
+    .module {
+      background: #1f1f1f;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    button, select, input {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+    button {
+      background-color: #9b5de5;
+      color: white;
+      cursor: pointer;
+    }
+    .output {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #00ffae;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎸 Guitar Learning App Demo (UI Only)</h1>
+
+  <div class="module">
+    <h2>🤖 Chatbot</h2>
+    <input type="text" id="chatInput" placeholder="Ask a guitar question..." />
+    <button>Send</button>
+    <div class="output" id="chatResponse"></div>
+  </div>
+
+  <div class="module">
+    <h2>🔔 Practice Reminder</h2>
+    <button>Enable Reminder</button>
+  </div>
+
+  <div class="module">
+    <h2>📸 Upload a Photo</h2>
+    <input type="file" />
+  </div>
+
+  <div class="module">
+    <h2>📄 Advertise with your CV</h2>
+    <button>Upload CV</button>
+  </div>
+
+  <div class="module">
+    <h2>🎵 Guitar Mood Generator</h2>
+    <select id="mood">
+      <option value="Happy">Happy</option>
+      <option value="Sad">Sad</option>
+      <option value="Energetic">Energetic</option>
+      <option value="Chill">Chill</option>
+    </select>
+    <button>Generate Practice Tips</button>
+    <div class="output" id="moodResult"></div>
+  </div>
+
+</body>
+</html>
